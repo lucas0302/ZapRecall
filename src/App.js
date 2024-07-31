@@ -1,5 +1,4 @@
-import "./css/reset.css";
-import DeckScreen from "./components/DeckScreen";
+import DeckScreen from "./components/DeckScreen/DeckScreen";
 
 function App() {
   return (
