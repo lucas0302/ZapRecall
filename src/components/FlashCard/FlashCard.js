@@ -6,11 +6,11 @@ import {
 } from "./StylesFlashCard";
 import play from "../../assets/seta_play.png";
 
-export default function FlashCard() {
+export default function FlashCard({card, index}) {
 
     return (
         <PerguntaFechada>
-            <p> Pergunt x</p>
+            <p> Pergunta {index + 1}</p>
             <img src={play} alt="Icon" />
         </PerguntaFechada>
     );
