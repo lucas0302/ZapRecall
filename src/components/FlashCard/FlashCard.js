@@ -4,46 +4,51 @@ import {
     ContainerBotoes,
     BotaoResposta
 } from "./StylesFlashCard";
-import play from "../../assets/seta_play.png";
 import turnedCard from "../../assets/seta_virar.png";
 import { useState } from 'react';
+import StatusIcon from "../Statusicon/StatusIcon";
 
 export default function FlashCard({ card, index }) {
     const [Started, setStarted] = useState(false);
     const [turned, setTurned] = useState(false);
     const [finished, setFinished] = useState(false);
+    const [status, setStatus] = useState("Sem reposta");
+
 
     function showQuestion() {
-        if(!finished){
+        if (!finished) {
             setStarted(true)
         }
     }
 
-    function answerquestion() {
-            setStarted(false)
-            setFinished(true)
+    function answerquestion(resQuestion) {
+        setStarted(false)
+        setFinished(true)
+        setStatus(resQuestion)
     }
+
+
     return (
         <>
             {!Started ? (
                 <PerguntaFechada>
                     <p> Pergunta {index + 1}</p>
-                    <img src={play} alt="Icon" onClick={showQuestion}/>
+                    <StatusIcon showQuestion={showQuestion} status={status}/>
                 </PerguntaFechada>
             ) : (
                 <PerguntaAberta>
                     {!turned ? (
                         <>
                             {card.question}
-                            <img src={turnedCard} alt="icon de virar o card" onClick={()=> setTurned(true)}/>
+                            <img src={turnedCard} alt="icon de virar o card" onClick={() => setTurned(true)} />
                         </>
                     ) : (
                         <>
                             {card.answer}
                             <ContainerBotoes>
-                                <button onClick={answerquestion}>Não lembrei</button>
-                                <button onClick={answerquestion}> Quase não lembrei</button>
-                                <button onClick={answerquestion}>Zap</button>
+                                <button onClick={() => answerquestion("wrong")}>Não lembrei</button>
+                                <button onClick={() => answerquestion("almost")}> Quase não lembrei</button>
+                                <button onClick={() => answerquestion("correct")}>Zap</button>
                             </ContainerBotoes>
                         </>
                     )}
