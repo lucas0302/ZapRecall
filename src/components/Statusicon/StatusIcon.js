@@ -5,22 +5,12 @@ import play from "../../assets/seta_play.png";
 
 export default function StatusIcon({ status, showQuestion }) {
 
-    function selectIcon() {
-        switch (status) {
-            case "wrong":
-                return erroicon
-            case "almost":
-                return quaseicon
-            case "correct":
-                return iconcoreto
-            default:
-                return play
-        }
-    }
-
     return (
         <>
-            <img src={selectIcon()} alt="Icon" onClick={showQuestion} />
+            {status === "wrong" && <img src={erroicon} alt="Icon"  /> }
+            {status === "almost" && <img src={quaseicon} alt="Icon"  /> }
+            {status === "correct" && <img src={iconcoreto} alt="Icon"  /> }
+            {status === "not response" && <img src={play} alt="Icon" onClick={showQuestion} /> }
         </>
     );
 }

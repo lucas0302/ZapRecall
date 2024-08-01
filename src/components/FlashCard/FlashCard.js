@@ -7,12 +7,13 @@ import {
 import turnedCard from "../../assets/seta_virar.png";
 import { useState } from 'react';
 import StatusIcon from "../Statusicon/StatusIcon";
+import { AMARELO, VERMELHO, VERDE, CINZA } from "../../constants/colors";
 
 export default function FlashCard({ card, index }) {
     const [Started, setStarted] = useState(false);
     const [turned, setTurned] = useState(false);
     const [finished, setFinished] = useState(false);
-    const [status, setStatus] = useState("Sem reposta");
+    const [status, setStatus] = useState("not response");
 
 
     function showQuestion() {
@@ -31,7 +32,7 @@ export default function FlashCard({ card, index }) {
     return (
         <>
             {!Started ? (
-                <PerguntaFechada>
+                <PerguntaFechada status={status}>
                     <p> Pergunta {index + 1}</p>
                     <StatusIcon showQuestion={showQuestion} status={status}/>
                 </PerguntaFechada>
@@ -46,9 +47,9 @@ export default function FlashCard({ card, index }) {
                         <>
                             {card.answer}
                             <ContainerBotoes>
-                                <button onClick={() => answerquestion("wrong")}>Não lembrei</button>
-                                <button onClick={() => answerquestion("almost")}> Quase não lembrei</button>
-                                <button onClick={() => answerquestion("correct")}>Zap</button>
+                                <BotaoResposta onClick={() => answerquestion("wrong")} background={VERMELHO}>Não lembrei</BotaoResposta>
+                                <BotaoResposta onClick={() => answerquestion("almost")}background={AMARELO}> Quase não lembrei</BotaoResposta>
+                                <BotaoResposta onClick={() => answerquestion("correct")} background={VERDE}>Zap</BotaoResposta>
                             </ContainerBotoes>
                         </>
                     )}

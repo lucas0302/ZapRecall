@@ -18,7 +18,7 @@ export const PerguntaFechada = styled.div`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    text-decoration: ${props => props.status === "not answered" ? "none" : "line-through"};
+    text-decoration: ${props => props.status === "not response" ? "none" : "line-through"};
     color: ${props => {
         switch(props.status){
             case "correct":
