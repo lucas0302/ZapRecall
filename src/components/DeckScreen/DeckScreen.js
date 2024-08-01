@@ -1,8 +1,6 @@
 import FlashCard from "../FlashCard/FlashCard";
 import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.png";
-import DeckReact from "../../constants/deckReact";
-
 import {
     ScreenContaier,
     LogoContainer,
@@ -15,6 +13,10 @@ import { useState } from 'react';
 export default function DeckScreen() {
     const [counter, setCounter] = useState(0);
 
+    function ConterQuestions(){
+        setCounter(counter + 1)
+    }
+
     return (
         <ScreenContaier>
             <LogoContainer>
@@ -26,6 +28,7 @@ export default function DeckScreen() {
                     key={card.question}
                     card ={card}
                     index={i}
+                    ConterQuestions={ConterQuestions}
                 />
             )}
 

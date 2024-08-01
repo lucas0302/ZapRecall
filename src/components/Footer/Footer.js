@@ -5,7 +5,7 @@ import {
 export default function Footer({ children, totalquestion, questionCouter }) {
     return (
         <FooterConcluidos>
-            {/* {children} */} {questionCouter}/{totalquestion} Concluídos
+         {questionCouter}/{totalquestion} Concluídos
         </FooterConcluidos>
     )
 }

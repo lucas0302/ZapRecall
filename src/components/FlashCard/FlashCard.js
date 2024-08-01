@@ -9,7 +9,7 @@ import { useState } from 'react';
 import StatusIcon from "../Statusicon/StatusIcon";
 import { AMARELO, VERMELHO, VERDE, CINZA } from "../../constants/colors";
 
-export default function FlashCard({ card, index }) {
+export default function FlashCard({ card, index, ConterQuestions }) {
     const [Started, setStarted] = useState(false);
     const [turned, setTurned] = useState(false);
     const [finished, setFinished] = useState(false);
@@ -26,8 +26,8 @@ export default function FlashCard({ card, index }) {
         setStarted(false)
         setFinished(true)
         setStatus(resQuestion)
+        ConterQuestions()
     }
-
 
     return (
         <>
